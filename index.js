@@ -1,179 +1,101 @@
+// масив об'єктів, з яким я буду постійно працювати:
+const users = [
+    {
+        name: 'Alex',
+        age: 34,
+        gender: 'male',
+        eyeColor: 'green',
+        isActive: true,
+        email: 'alex123@gmail.com',
+    },
+    {
+        name: 'Nina',
+        age: 17,
+        gender: 'female',
+        eyeColor: 'grey',
+        isActive: true,
+        email: 'iLoveCats001@gmail.com',
+    },
+    {
+        name: 'Olga',
+        age: 45,
+        gender: 'female',
+        eyeColor: 'brown',
+        isActive: false,
+        email: 'olga03@gmail.com',
+    },
+    {
+        name: 'Max',
+        age: 21,
+        gender: 'male',
+        eyeColor: 'brown',
+        isActive: true,
+        email: 'max4343324r@gmail.com',
+    },
+    {
+        name: 'Victor',
+        age: 12,
+        gender: 'male',
+        eyeColor: 'green',
+        isActive: false,
+        email: 'aa377288347@gmail.com',
+    }
+];
+
+
 // 1
-const user = {
-    hobby: "volleyball",
-    premium: true,
-};
-user.mood = 'happy';
-user.hobby = 'skydiving';
-user.premium = false;
-const keys = Object.keys(user);
-const {hobby, premium, mood} = user;
-console.log(`${keys[0]}: ${hobby}; ${keys[1]}: ${premium}; ${keys[2]}: ${mood}`);
+
+console.log('Task 1');
+
+const names = users.map(user => user.name);
+console.log(`${names}`);
 
 // 2
-// тут поки не знаю як використати деструктуризацію
-const countProps = function(obj){
-    let result = 0;
-    for(const key in obj){
-        result++;
-    }
-    return result;
-};
 
-const obj1 = {
-    color: 'blue',
-    size: 'small',
-};
-const obj2 = {
-    color: 'red',
-    size: 'medium',
-    shape: 'circle',
-};
-const obj3 = {
-    color: 'green',
-    size: 'big',
-    shape: 'square',
-    borderColor: 'blue',
-};
-console.log("У першому об'єкті " + countProps(obj1) + " властивостей, у другому - " + countProps(obj2) + ", а у третьому - " + countProps(obj3));
+console.log('Task 2');
 
+const peopleWithGreenEyes = users.filter(user => user.eyeColor === 'green');
+const peopleWithBrownEyes = users.filter(user => user.eyeColor === 'brown');
+const peopleWithGreyEyes = users.filter(user => user.eyeColor === 'grey');
+// масиви об'єктів
+console.log(peopleWithBrownEyes);
+console.log(peopleWithGreenEyes);
+console.log(peopleWithGreyEyes);
+// масиви імен, на всяк випадок
+// console.log(`People with brown eyes: ${peopleWithBrownEyes.map(user => user.name)}`);
+// console.log(`People with green eyes: ${peopleWithGreenEyes.map(user => user.name)}`);
+// console.log(`People with grey eyes: ${peopleWithGreyEyes.map(user => user.name)}`);
 
 // 3
-const findBestEmployee = function(employees){
-    const {olga, alex, marta, max} = employees;
-    let maxOfTasks = olga;
-    let nameOfTheBestEmployer = 'Olga';
-    if(alex > maxOfTasks) {
-        maxOfTasks = alex;
-        nameOfTheBestEmployer = 'Alex';
-    }
-    if(marta > maxOfTasks){
-        maxOfTasks = marta;
-        nameOfTheBestEmployer = 'Marta';
-    }
-    if(max > maxOfTasks){
-        maxOfTasks = max;
-        nameOfTheBestEmployer = 'Max';
-    }
-    return nameOfTheBestEmployer;
-};
-const employees = {
-    olga: 4,
-    alex: 10,
-    marta: 12,
-    max: 6,
-};
-console.log(findBestEmployee(employees));
+
+console.log('Task 3');
+
+const men = users.filter(user => user.gender === 'male');
+const women = users.filter(user => user.gender === 'female');
+console.log(`Men: ${men.map(user => user.name)}`);
+console.log(`Women: ${women.map(user => user.name)}`);
 
 // 4
-const countTotalSalary = function(employeesSalary){
-    const {olga, alex, marta, max} = employeesSalary;
-    return olga + alex + marta + max;
-};
-const employeesSalary = {
-    olga: 400,
-    alex: 1000,
-    marta: 1200,
-    max: 600,
-};
-console.log("Сумарна зарплата всіх працівників становить " + countTotalSalary(employeesSalary));
 
+console.log('Task 4');
+
+// тут знову спочатку вивела масив об'єктів, а тоді окремо імена
+const notActive = users.filter(user => !user.isActive);
+console.log(notActive);
+console.log(notActive.map(user => user.name));
 
 // 5
-const geometricShapes = [
-    {
-      color: "purple",
-      size: "big",
-      borderColor: "green",
-      opacity: 0.6,
-    },
-    {
-        color: "white",
-        size: "medium",
-        borderColor: "blue",
-        opacity: 0.4,
-      },
-      {
-        color: "yellow",
-        size: "small",
-        borderColor: "red",
-        opacity: 0.9,
-      },
-  ]
-  const getAllPropValues = function(arr, prop){
-    let result = [];
-    const [first, second, third] = arr;
-    result.push(first[prop]);
-    result.push(second[prop]);
-    result.push(third[prop]);
-    return result;
-  }
-  console.log(getAllPropValues(geometricShapes, 'color'));
-  console.log(getAllPropValues(geometricShapes, 'size'));
-  console.log(getAllPropValues(geometricShapes, 'borderColor'));
-  console.log(getAllPropValues(geometricShapes, 'opacity'));
 
+console.log('Task 5');
+
+const user = users.find(user => user.email === 'iLoveCats001@gmail.com');
+console.log(user.name);
 
 // 6
-const allProducts = [
-    {
-        name: 'milk',
-        price: 20,
-        amount: 3,
-    },
-    {
-        name: 'apple',
-        price: 10,
-        amount: 15,
-    },
-    {
-        name: 'banana',
-        price: 40,
-        amount: 5,
-    },
-]
-const calculateTotalPrice = function(allProducts, productName){
-    const [milk, apple, banana] = allProducts;
-    if(productName == milk.name) return milk.price * milk.amount; 
-    if(productName == apple.name) return apple.price * apple.amount; 
-    if(productName == banana.name) return banana.price * banana.amount; 
-};
-console.log("Загальна вартість продукту становить " + calculateTotalPrice(allProducts, 'milk'));
-console.log("Загальна вартість продукту становить " + calculateTotalPrice(allProducts, 'apple'));
-console.log("Загальна вартість продукту становить " + calculateTotalPrice(allProducts, 'banana'));
 
+console.log('Task 6');
 
-// 7
-const account = {
-    number: 12345,
-    balance: 1000,
-    topUps: [400, 700],
-    withdraws: [100],
-};
-while(true){
-    const action = prompt("Яку дію Ви хочете виконати(подивитись баланс/ поповнити рахунок/ зняти кошти/ переглянути транзакції)?");
-    if(action === 'подивитись баланс'){
-        alert(`На рахунку ${account.balance} гривень`);
-    }
-    if(action === 'поповнити рахунок'){
-        const sum = Number(prompt("Яку суму бажаєте покласти на рахунок?"));
-        account.balance += sum;
-        account.topUps.push(sum);
-        alert(`Рахунок успішно поповнено на ${sum} гривень. Баланс становить ${account.balance} гривень`);
-    }
-    if(action === 'зняти кошти'){
-        const sum = Number(prompt("Яку суму бажаєте зняти?"));
-        if(sum > account.balance){
-            alert("на рахунку недостатньо коштів!");
-            continue;
-        }
-        account.balance -= sum;
-        account.withdraws.push(sum);
-        alert(`Ви успішно зняли ${sum} гривень. На рахунку залишилось ${account.balance} гривень`);
-    }
-    if(action === 'переглянути транзакції'){
-        const {topUps, withdraws, ...rest} = account;
-        alert(`Поповнення рахунку: ${topUps}; зняття коштів: ${withdraws}`);
-    }
-    else alert("Введено неправильний запит. Спробуйте ще раз");
-}
+const minAge = 16;
+const maxAge = 40;
+const ageRestrictions = users.filter(user => user.age >= minAge && user.age <= maxAge);
+console.log(ageRestrictions.map(user => user.name));
